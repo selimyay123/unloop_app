@@ -9,6 +9,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _isProtectionActive = true;
+  int _resistanceCount = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            /* 
+            hero section
+            */
             Container(
               width: double.infinity,
               padding: EdgeInsets.all(20),
@@ -30,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: _isProtectionActive
                     ? Colors.greenAccent.shade100
                     : Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(8),
               ),
               child: Column(
                 children: [
@@ -58,6 +62,46 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
+            ),
+
+            /* 
+            Resistance Count
+            */
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    margin: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Column(
+                      children: [
+                        Text("Daily Win"),
+                        Text("8", style: TextStyle(fontSize: 42)),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    margin: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Column(
+                      children: [
+                        Text("Daily lose"),
+                        Text("12", style: TextStyle(fontSize: 42)),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
