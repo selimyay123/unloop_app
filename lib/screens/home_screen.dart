@@ -9,7 +9,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _isProtectionActive = true;
-  int _resistanceCount = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -69,41 +68,59 @@ class _HomeScreenState extends State<HomeScreen> {
             */
             Row(
               children: [
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    margin: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Column(
-                      children: [
-                        Text("Daily Win"),
-                        Text("8", style: TextStyle(fontSize: 42)),
-                      ],
-                    ),
-                  ),
+                StatCard(
+                  title: "Daily Win",
+                  value: 8,
+                  info:
+                      "This shows how many times you`ve resisted target apps today.",
                 ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    margin: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Column(
-                      children: [
-                        Text("Daily lose"),
-                        Text("12", style: TextStyle(fontSize: 42)),
-                      ],
-                    ),
-                  ),
+                StatCard(
+                  title: "Daily Lose",
+                  value: 12,
+                  info:
+                      "This shows how many times you`ve yielded to target apps today.",
                 ),
               ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class StatCard extends StatelessWidget {
+  final String title;
+  final int value;
+  final String info;
+
+  const StatCard({
+    super.key,
+    required this.title,
+    required this.value,
+    required this.info,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Tooltip(
+        message: info,
+        triggerMode: TooltipTriggerMode.tap,
+        showDuration: const Duration(seconds: 3),
+        child: Container(
+          padding: EdgeInsets.all(20),
+          margin: EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.grey.shade300,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Column(
+            children: [
+              Text(title),
+              Text(value.toString(), style: TextStyle(fontSize: 42)),
+            ],
+          ),
         ),
       ),
     );
