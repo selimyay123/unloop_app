@@ -8,6 +8,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<Map<String, dynamic>> _targetApps = [
+    {"name": "Instagram", "icon": Icons.camera_alt, "isBlocked": true},
+    {"name": "TikTok", "icon": Icons.music_note, "isBlocked": false},
+    {"name": "Twitter/X", "icon": Icons.alternate_email, "isBlocked": true},
+    {"name": "Youtube", "icon": Icons.play_arrow, "isBlocked": true},
+  ];
   bool _isProtectionActive = true;
 
   @override
@@ -83,36 +89,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             /* 
-            ultimate trigger 
-            */
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(20),
-              margin: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                border: Border.all(),
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.grey.shade300,
-              ),
-              child: Center(
-                child: Text.rich(
-                  TextSpan(
-                    text: "The ultimate trigger: ",
-                    style: TextStyle(fontSize: 16),
-                    children: [
-                      TextSpan(
-                        text: "Loneliness",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            /* 
             weekly report
             */
             Container(
@@ -127,6 +103,60 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Center(
                 child: Text("Weekly Report", style: TextStyle(fontSize: 16)),
               ),
+            ),
+            /* 
+            app list
+            */
+            const Padding(
+              padding: EdgeInsetsGeometry.symmetric(
+                horizontal: 16,
+                vertical: 8,
+              ),
+              child: Text(
+                "Managed Apps",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Column(
+              children: _targetApps.map((app) {
+                return Container(
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(app['icon'] as IconData, color: Colors.blueGrey),
+                      const SizedBox(width: 16),
+                      Text(
+                        app['name'] as String,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Spacer(),
+                      Switch(
+                        value: app['isBlocked'] as bool ? true : false,
+                        onChanged: (newValue) {
+                          setState(() {
+                            app['isBlocked'] = newValue;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
             ),
           ],
         ),
