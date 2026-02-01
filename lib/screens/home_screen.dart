@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: _isProtectionActive
                     ? Colors.greenAccent.shade100
                     : Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
                 children: [
@@ -82,6 +82,52 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
+            /* 
+            ultimate trigger 
+            */
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.grey.shade300,
+              ),
+              child: Center(
+                child: Text.rich(
+                  TextSpan(
+                    text: "The ultimate trigger: ",
+                    style: TextStyle(fontSize: 16),
+                    children: [
+                      TextSpan(
+                        text: "Loneliness",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            /* 
+            weekly report
+            */
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.grey.shade300,
+              ),
+              child: Center(
+                child: Text("Weekly Report", style: TextStyle(fontSize: 16)),
+              ),
+            ),
           ],
         ),
       ),
@@ -113,7 +159,7 @@ class StatCard extends StatelessWidget {
           margin: EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.grey.shade300,
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
           ),
           child: Column(
             children: [
