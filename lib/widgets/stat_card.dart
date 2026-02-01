@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unloop/widgets/unloop_container.dart';
 
 class StatCard extends StatelessWidget {
   final String title;
@@ -19,13 +20,8 @@ class StatCard extends StatelessWidget {
         message: info,
         triggerMode: TooltipTriggerMode.tap,
         showDuration: const Duration(seconds: 3),
-        child: Container(
-          padding: EdgeInsets.all(20),
-          margin: EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Colors.grey.shade300,
-            borderRadius: BorderRadius.circular(12),
-          ),
+        child: UnloopContainer(
+          marginValue: 16,
           child: Column(
             children: [
               Text(title),

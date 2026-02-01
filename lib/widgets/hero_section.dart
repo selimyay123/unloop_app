@@ -20,7 +20,7 @@ class HeroSection extends StatelessWidget {
         color: isProtectionActive
             ? Colors.greenAccent.shade100
             : Colors.grey.shade300,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
         children: [

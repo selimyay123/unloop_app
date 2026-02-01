@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unloop/widgets/unloop_container.dart';
 
 class AppListSection extends StatelessWidget {
   final List<Map<String, dynamic>> targetApps;
@@ -28,13 +29,8 @@ class AppListSection extends StatelessWidget {
         Column(
           children: [
             for (int i = 0; i < targetApps.length; i++) // Klasik For Döngüsü
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(12),
-                ),
+              UnloopContainer(
+                marginValue: 8,
                 child: Row(
                   children: [
                     Icon(

@@ -25,24 +25,38 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(title: Text("Unloop")),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeroSection(
-              isProtectionActive: _isProtectionActive,
-              onModeChanged: (newValue) {
-                setState(() {
-                  _isProtectionActive = newValue;
-                });
-              },
-            ),
-            StatCardSection(),
-            WeeklyReportSection(),
-            AppListSection(
-              targetApps: _targetApps,
-              onAppToggled: (index, currentValue) {},
-            ),
-          ],
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              HeroSection(
+                isProtectionActive: _isProtectionActive,
+                onModeChanged: (newValue) {
+                  setState(() {
+                    _isProtectionActive = newValue;
+                  });
+                },
+              ),
+              StatCardSection(),
+              WeeklyReportSection(),
+              AppListSection(
+                targetApps: _targetApps,
+                onAppToggled: (index, currentValue) {
+                  setState(() {
+                    _targetApps[index]['isBlocked'] = currentValue;
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
